@@ -1,0 +1,49 @@
+%!TEX root = ../proteoform_nomenclature.tex
+%---------------------------------------------------------------------
+%	Basic Rules
+%---------------------------------------------------------------------
+
+\begin{newrule}
+Amino Acid Code
+\end{newrule}
+
+The base sequence of the proteoform is written using the standard capitalized single character amino acid codes. Although ambiguous characters, such as J and X, can be used, no characterized proteoform can contain these symbols.
+\\
+
+\indent \textit{e.g.} \texttt{SEQUENCE} \\
+\indent \textit{e.g.} \texttt{SEQUENCE} \\
+\indent \indent This is a partially characterized sequence.
+\\
+
+\begin{newrule}
+Modification Tag
+\end{newrule}
+
+Tags are used to signal information regarding a modification; they are denoted by square brackets. Tags are placed after the character representing the modified amino acid. Multiple modifications of the same amino acid are described by multiple square bracket pairs.
+\\
+
+\indent \textit{e.g.} \texttt{SEQUK[Acetyl][Unimod:Label:13C(3)]ENCE} \\
+\indent \indent This is a carbon-13 label on an acetylated amino acid.
+\\
+
+\begin{newrule}
+Tag Descriptor
+\end{newrule}
+
+Tags contain \textbf{Descriptors} that take the form of \textbf{Key/Value} pairs, where the Key and Value are separated by colons. The Key alerts the reader to the type of the descriptor. Some descriptors have implied keys that do not need to be written out, see Rules 5 and 6.
+\\
+
+\indent \textit{e.g.} \texttt{SEQUEN[mass:+14.02]CE} \\
+\indent \indent This is read as a +14.02 Da mass shift on an asparagine residue.
+\\
+
+\begin{newrule}
+Multiple Tag Descriptors
+\end{newrule}
+
+Multiple descriptors can be placed in a single tag, provided they are separated by pipes.
+\\
+
+\indent \textit{e.g.} \texttt{SEQUEN[mod:Methyl|mass:+14.02]CE} \\
+\indent \indent This is read as a methylation of an asparagine residue, with a mass shift of +14.02 Da.
+\\

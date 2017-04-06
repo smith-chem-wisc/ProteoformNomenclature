@@ -1,0 +1,51 @@
+%!TEX root = ../proteoform_nomenclature.tex
+%---------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%---------------------------------------------------------------------
+
+\documentclass[11pt, letterpaper, unknownkeysallowed]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage[justification=justified, singlelinecheck=false]{caption}
+\usepackage[style=chem-acs, articletitle=true, maxbibnames=15]{biblatex}
+\usepackage{pdfpages}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{courier}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\newcounter{newrule}[section]
+\newenvironment{newrule}[1][]
+{
+\refstepcounter{newrule}
+\par\medskip\noindent\textbf{Rule~\thenewrule.} 
+\rmfamily
+}
+{\medskip}
+
+\usepackage{datatool}% http://ctan.org/pkg/datatool
+\newcommand{\sortitem}[1]{%
+  \DTLnewrow{list}% Create a new entry
+  \DTLnewdbentry{list}{description}{#1}% Add entry as description
+}
+\newenvironment{sortedlist}{%
+  \DTLifdbexists{list}{\DTLcleardb{list}}{\DTLnewdb{list}}% Create new/discard old list
+}{%
+  \DTLsort{description}{list}% Sort list
+  \begin{itemize}%
+    \DTLforeach*{list}{\theDesc=description}{%
+      \item \theDesc}% Print each item
+  \end{itemize}%
+}
+
+\addbibresource{docs/capstone.bib}

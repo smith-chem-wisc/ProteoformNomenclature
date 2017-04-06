@@ -1,0 +1,27 @@
+%!TEX root = ../proteoform_nomenclature.tex
+%---------------------------------------------------------------------
+%	Advanced Rules
+%---------------------------------------------------------------------
+
+\begin{newrule}
+Prefix Tag
+\end{newrule}
+
+If all tags in a proteoform use the same \textbf{Key}, the sequence may be PREFIXED with a single tag defining the Key followed by a plus sign.
+
+\indent \textit{e.g.} \texttt{[RESID]+SE[12]QUE[42]NCE} \\
+\indent \indent Here the numbers in brackets are accession numbers in the resid database
+\indent \textit{e.g.} \texttt{[mass]+SE[12]QUE[42]NCE} \\
+\indent \indent Here the numbers in brackets are masses
+\indent \textit{e.g.} \texttt{[formula]+SE[CH(2)]QUE[H(2)O]NCE} \\
+\\
+
+\begin{newrule}
+Terminal Modification
+\end{newrule}
+
+The tag describing the terminal modifications is separated with a dash to the left of the N-terminal amino acid, and the right of a C-terminal amino acid.
+
+\indent \textit{e.g.} \texttt{[mass:-17.027]-QUENCE-[Amidation]}
+\\
+

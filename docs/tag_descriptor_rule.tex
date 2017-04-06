@@ -1,0 +1,113 @@
+%!TEX root = ../proteoform_nomenclature.tex
+%---------------------------------------------------------------------
+%	Tag Descriptor Rule
+%---------------------------------------------------------------------
+
+\begin{newrule}
+Supported Tag Descriptors
+\end{newrule}
+
+The supported descriptors are: Mass, Chemical Formula, Additional Information, Modification Name, and Database Accession. The use of each is detailed below. A key must be present in a descriptor if it is mandatory, but an optional key may be omitted.
+\\
+
+\noindent \large{MASS:}
+
+Key (Mandatory): \texttt{mass}
+
+Specification: Mass difference in Daltons between the coded amino acid and the observed mass. Can be used to show the location of an unclassified mass shift. Arbitrary precision is allowed, and positive mass shifts can be specified with either a plus sign or no sign. Negative shifts must be specified with a negative sign. The mass is assumed to be observed monoisotopic unless there is an INFO tag (below) explaining otherwise.
+
+\indent \textit{e.g.} \texttt{SEQ[mass:+15.995]UENCE} \\
+\indent \textit{e.g.} \texttt{SEQ[mass:+16]UENCE} \\
+\indent \textit{e.g.} \texttt{SEQ[mass:16]UENCE} \\
+\indent \indent These three examples could refer to the same proteoform.
+\\
+
+\noindent \large{CHEMICAL FORMULA:}
+
+Key (Mandatory): \texttt{formula}
+
+Specification: Chemical formulas of modifications may be specified using this descriptor. Formulas must use the UniMod sysmbols provided here: \url{http://www.unimod.org/masses.html}, and follow the rules under Composition at \url{http://www.unimod.org/fields.html}.
+
+\indent \textit{e.g.} \texttt{SEQUEN[Methyl|formula:H(2)C]CE} \\
+\indent \textit{e.g.} \texttt{SEQUEN[glucosylgalactosyl|formula:O Hex(2)]CE} \\
+\\
+
+\noindent \large{ADDITIONAL INFORMATION:}
+
+Key (Mandatory): \texttt{info}
+
+Specification: This descriptor is used to signal that unstructured text has been added to the tag. It can be used to address needs not met by existing tags, as well as the development of new descriptors. Descriptors may not contain the pipe character.
+\\
+
+\indent \textit{e.g.} \texttt{SEQ[info: Some comment about this amino acid]UENCE}
+\\
+
+Guidelines for special cases:
+\begin{enumerate}
+\item \textit{Cross-links} within or between proteoforms can be described by the form [info:Crosslinker.ID]:
+
+\indent \textit{e.g.} \texttt{SEQ[info:BS3.XL1]UEN[info:BS3.XL1]CE} \\
+\indent \indent Crosslinker BS3 connects residues Q and N.
+\indent \textit{e.g.} \texttt{SEQU[info:BS3.H2O]ENC[info:BS3.NH3]E} \\
+\indent \indent Deadend crosslinks with water or an amine, respectively. This corresponds to a modification.
+\\
+
+\item \textit{Unusual amino acids} that are not included in the amino acid codes are treated as modifications. We suggest using the abbreviations from the DNA Data Bank of Japan (\url{http://www.ddbj.nig.ac.jp/sub/ref3-e.html}).
+
+\indent \textit{e.g.} \texttt{SEQUE[info:bAla]NCE} \\
+\indent \indent This is a beta-Alanine between E and N.
+\\
+\end{enumerate}
+
+\noindent \large{MODIFICATION NAME:}
+
+Key (Optional): \texttt{mod}
+
+Specification: A common name for the modification. The default names are the UniMod Interim Names available here (\url{http://www.unimod.org/modifications_list.php}). 
+\\
+
+\indent \textit{e.g.} \texttt{SEQUEN[Methyl]CE} 
+\\
+
+\noindent When specifying a modification using a common name other than the UniMod Interim Name, provide the database name in parentheses.
+
+\indent \textit{e.g.} \texttt{PEPT[Phosphothreonine(UniProt)]IDE} \\
+\indent \textit{e.g.} \texttt{PEPT[O-phospho-L-threonine(RESID)]IDE} \\
+\indent \textit{e.g.} \texttt{PEPT[O-phospho-L-threonine(PSIMod)]IDE} \\
+
+\noindent The allowed values must come from the following fields:
+\begin{itemize}
+\item Unimod - Interim Name
+\item UniProt - ID
+\item RESID - Name
+\item PSI-MOD - Short label
+\item BRNO - Common nomenclatures used for histone PTMs (e.g. ph, me1, ac)
+\\
+\end{itemize}
+
+\noindent \large{DATABASE ACCESSION:}
+
+Key (Mandatory): One of the allowed database names: \texttt{Unimod, UniProt, RESID, PSI-MOD, UniCarbKB, PROOntology,} or \texttt{BRNO}
+
+Specification: This descriptor is used to link the modification to a database entry by means of a database accession number.
+\\
+
+\indent \textit{e.g.} \texttt{PEPT[Unimod:21]IDE} \\
+\indent \textit{e.g.} \texttt{PEPT[UniProt:PTM-0254]IDE} \\
+\indent \textit{e.g.} \texttt{PEPT[RESID:AA0038]IDE} \\
+\indent \textit{e.g.} \texttt{PEPT[PSI-MOD:MOD:00047]IDE} \\
+
+Comment: There are a number of databases which provide both names and accession number for the various modifications that can occur to amino acids. This protocol does not limit users to one or another of these databases.
+\\
+
+\noindent Supported PTM databases:
+\begin{enumerate}
+\item Unimod (default) - \url{http://www.unimod.org/modifications_list.php}
+\item UniProt (recommended) - \url{http://www.uniprot.org/docs/ptmlist}
+\item RESID (recommended) -\url{ http://pir.georgetown.edu/resid/resid.shtml}
+\item PSI-MOD (recommended) -\url{ http://www.ebi.ac.uk/ols/ontologies/mod}
+\item BRNO MOD (acceptable)
+\item UniCarbKB (acceptable) - \url{http://www.unicarbkb.org/}
+\item PRO Ontology/NCBI  (acceptable) -  \url{http://pir.georgetown.edu/pro/}
+\\
+\end{enumerate}

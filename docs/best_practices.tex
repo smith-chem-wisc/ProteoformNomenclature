@@ -1,0 +1,27 @@
+%!TEX root = ../proteoform_nomenclature.tex
+%---------------------------------------------------------------------
+%	Best Practices
+%---------------------------------------------------------------------
+
+\section{Best Practices}
+
+The best practices emphasize human readability and clarity of modification identities for publishing sequences.
+
+\begin{enumerate}
+
+\item In the pipe-separated list, the most descriptive element should go first to improve human readability.
+
+\item If the identity of a modification is known, it should be listed. This improves the clarity over listing only masses or accessions.
+
+\item Rule 6 should be used when there is only one element in the tag -- otherwise, human readability is compromised.
+
+\item Spacing before and after each descriptor is arbitrary, and should be appropriately added to improve readability.
+
+\item In the case of multiple key value pairs, UniMod interim names without key are recommended to come first for human readability.
+
+\item Some Unimod interim names contain colons. When these occur it is best to include the label Unimod.
+
+\end{enumerate}
+
+\indent Not best practice: \texttt{SEQUK[Label:13C(3)][Acetyl]ENCE} \\
+\indent Best practice: \texttt{SEQUK[Unimod:Label:13C(3)][Acetyl]ENCE} \\
